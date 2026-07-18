@@ -38,16 +38,7 @@ public class RideController {
 	@Autowired
 	private UserRepository userRepo;
 	
-	@GetMapping("/getuser")
-	public String getUser()
-	{
-		org.springframework.security.core.@Nullable Authentication authentication =
-		        SecurityContextHolder.getContext().getAuthentication();
-		System.out.println(authentication.getName());
-		Optional<User> user=userRepo.findByName(authentication.getName());
-		if(user.isPresent()) System.out.println(user.get().getEmail()+" "+user.get().getName());
-		return authentication.getName();
-	}
+	
   
 	@PostMapping("/createride")
 	public ResponseEntity<String> getRides(@Valid @RequestBody CreateRideRequest createRideRequest)
