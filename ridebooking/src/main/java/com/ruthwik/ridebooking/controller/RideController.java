@@ -38,8 +38,6 @@ public class RideController {
 	@Autowired
 	private UserRepository userRepo;
 	
-	
-  
 	@PostMapping("/createride")
 	public ResponseEntity<String> getRides(@Valid @RequestBody CreateRideRequest createRideRequest)
 	{
