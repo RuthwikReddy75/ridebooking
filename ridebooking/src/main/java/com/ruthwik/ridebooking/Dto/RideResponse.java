@@ -4,51 +4,42 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.DecimalMin;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
+public class RideResponse {
 
-public class CreateRideRequest {
+    private Long id;
 
-    @NotBlank(message = "Source is required")
     private String source;
 
-    @NotBlank(message = "Destination is required")
     private String destination;
 
-    @NotNull(message = "Ride date is required")
     private LocalDate rideDate;
 
-    @NotNull(message = "Ride time is required")
     private LocalDateTime rideTime;
 
-    @Min(value = 1, message = "Total seats must be at least 1")
     private Integer totalSeats;
-    
-    private String vehicleNumber;
-    
-    public String getVehicleNumber() {
-		return vehicleNumber;
-	}
 
-	public void setVehicleNumber(String vehicleNumber) {
-		this.vehicleNumber = vehicleNumber;
-	}
-
-	@NotNull(message = "Price per seat is required")
-    @DecimalMin(value = "0.0", inclusive = false, message = "Price must be greater than 0")
     private Double pricePerSeat;
+
+    private String vehicleNumber;
 
     private String description;
 
-    @NotEmpty(message = "Ride must contain at least one stop")
-    @Valid
-    private List<RideStopRequest> rideStops;
+    private String status;
 
-    // Getters and Setters
+    private LocalDateTime createdAt;
+
+    private List<RideStopResponse> rideStops;
+
+    public RideResponse() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getSource() {
         return source;
@@ -90,14 +81,20 @@ public class CreateRideRequest {
         this.totalSeats = totalSeats;
     }
 
-    
-
     public Double getPricePerSeat() {
         return pricePerSeat;
     }
 
     public void setPricePerSeat(Double pricePerSeat) {
         this.pricePerSeat = pricePerSeat;
+    }
+
+    public String getVehicleNumber() {
+        return vehicleNumber;
+    }
+
+    public void setVehicleNumber(String vehicleNumber) {
+        this.vehicleNumber = vehicleNumber;
     }
 
     public String getDescription() {
@@ -108,11 +105,27 @@ public class CreateRideRequest {
         this.description = description;
     }
 
-    public List<RideStopRequest> getRideStops() {
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public List<RideStopResponse> getRideStops() {
         return rideStops;
     }
 
-    public void setRideStops(List<RideStopRequest> rideStops) {
+    public void setRideStops(List<RideStopResponse> rideStops) {
         this.rideStops = rideStops;
     }
 }

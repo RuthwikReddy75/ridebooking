@@ -54,8 +54,19 @@ public class Ride {
     @OneToMany(mappedBy = "ride", cascade = CascadeType.ALL, orphanRemoval = true)
     @OrderBy("stopOrder ASC")
     private List<RideStop> rideStops = new ArrayList<>();
+    
+    @Column(name="Vehicle_number")
+    private String vehicleNumber;
 
-    public Ride() {
+    public String getVehicleNumber() {
+		return vehicleNumber;
+	}
+
+	public void setVehicleNumber(String vehicleNumber) {
+		this.vehicleNumber = vehicleNumber;
+	}
+
+	public Ride() {
     }
 
     @PrePersist

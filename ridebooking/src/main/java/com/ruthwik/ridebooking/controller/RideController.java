@@ -2,6 +2,7 @@ package com.ruthwik.ridebooking.controller;
 
 import org.springframework.context.ApplicationContext;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
@@ -16,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ruthwik.ridebooking.Dto.CreateRideRequest;
+import com.ruthwik.ridebooking.Dto.RideResponse;
 import com.ruthwik.ridebooking.Repository.UserRepository;
+import com.ruthwik.ridebooking.model.Ride;
 import com.ruthwik.ridebooking.model.User;
 import com.ruthwik.ridebooking.service.CustomUserDetailsService;
 import com.ruthwik.ridebooking.service.RideService;
@@ -34,10 +37,17 @@ public class RideController {
 	 @Autowired
 	 private ApplicationContext context;
 
-
 	@Autowired
 	private UserRepository userRepo;
 	
+	 @GetMapping("/myrides")
+	    public ResponseEntity<List<RideResponse>> getMyCreatedRides() {
+		 
+	        List<RideResponse> rides =
+	                rideService.getRides();
+	        return ResponseEntity.ok(rides);
+	    }
+
 	@PostMapping("/createride")
 	public ResponseEntity<String> getRides(@Valid @RequestBody CreateRideRequest createRideRequest)
 	{
