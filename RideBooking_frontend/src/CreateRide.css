@@ -1,0 +1,333 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&display=swap');
+
+* { box-sizing: border-box; }
+
+.create-ride-page {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  background: #FBF7F0;
+  padding: 64px 24px;
+  font-family: 'Inter', "Segoe UI", system-ui, sans-serif;
+  position: relative;
+}
+
+.create-ride-page::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 280px;
+  background: #146B5C;
+  clip-path: polygon(0 0, 100% 0, 100% 78%, 0 100%);
+}
+
+.ride-page-container {
+  width: 100%;
+  max-width: 720px;
+  position: relative;
+  z-index: 1;
+  margin-top: 24px;
+}
+
+.ride-card {
+  background: #FFFFFF;
+  border-radius: 20px;
+  box-shadow: 0 24px 70px rgba(20, 107, 92, 0.22);
+  border: 1px solid #E4DDD0;
+  padding: 48px 52px;
+}
+
+/* Header */
+
+.ride-header {
+  margin-bottom: 30px;
+}
+
+.ride-badge {
+  display: inline-block;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #146B5C;
+  background: #E4F3EF;
+  padding: 6px 13px;
+  border-radius: 6px;
+  margin-bottom: 18px;
+}
+
+.ride-header h1 {
+  font-family: 'Sora', sans-serif;
+  margin: 0 0 10px;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #211D1A;
+}
+
+.ride-header p {
+  margin: 0;
+  font-size: 14.5px;
+  color: #75706A;
+  line-height: 1.6;
+  max-width: 460px;
+}
+
+/* Form layout */
+
+.ride-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #4A453F;
+  margin-bottom: 7px;
+}
+
+.form-group label svg {
+  color: #146B5C;
+  flex-shrink: 0;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 12px 14px;
+  border: none;
+  border-bottom: 2px solid #E4DDD0;
+  border-radius: 0;
+  background: transparent;
+  font-size: 14.5px;
+  font-family: inherit;
+  color: #211D1A;
+  outline: none;
+  resize: none;
+  transition: border-color 0.15s ease;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #B4ADA2;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-bottom-color: #146B5C;
+}
+
+.form-group input.input-error,
+.form-group textarea.input-error {
+  border-bottom-color: #C4432B;
+}
+
+.field-error {
+  margin-top: 6px;
+  font-size: 12px;
+  color: #C4432B;
+}
+
+/* Server / status messages */
+
+.server-message {
+  padding: 11px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  margin-bottom: 18px;
+  font-weight: 500;
+}
+
+.server-message.success {
+  background: #E4F3EF;
+  color: #146B5C;
+}
+
+.server-message.error {
+  background: #FBEAE6;
+  color: #C4432B;
+}
+
+/* Stops section */
+
+.stops-section {
+  margin-top: 6px;
+  margin-bottom: 24px;
+}
+
+.stops-heading-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.stops-heading-row label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #4A453F;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.add-stop-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: 1.5px solid #146B5C;
+  color: #146B5C;
+  font-family: 'Sora', sans-serif;
+  font-size: 12.5px;
+  font-weight: 700;
+  padding: 7px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.add-stop-btn:hover {
+  background: #146B5C;
+  color: #FFFFFF;
+}
+
+.stop-row {
+  display: grid;
+  grid-template-columns: 1fr 84px 110px auto;
+  gap: 12px;
+  align-items: start;
+  background: #FBF7F0;
+  border: 1px solid #E4DDD0;
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 10px;
+}
+
+.stop-row .form-group {
+  margin-bottom: 0;
+}
+
+.stop-row input {
+  background: #FFFFFF;
+  border: 1px solid #E4DDD0;
+  border-bottom: 1px solid #E4DDD0;
+  border-radius: 8px;
+  padding: 9px 11px;
+  font-size: 13.5px;
+}
+
+.stop-row input:focus {
+  border-color: #146B5C;
+}
+
+.stop-row input.input-error {
+  border-color: #C4432B;
+}
+
+.stop-order-badge {
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  background: #146B5C;
+  color: #FFFFFF;
+  font-family: 'Sora', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+
+.remove-stop-btn {
+  margin-top: 2px;
+  width: 34px;
+  height: 34px;
+  border: none;
+  background: transparent;
+  color: #B4ADA2;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.remove-stop-btn:hover:not(:disabled) {
+  background: #FBEAE6;
+  color: #C4432B;
+}
+
+.remove-stop-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* Submit */
+
+.ride-card button[type="submit"] {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 999px;
+  background: #146B5C;
+  color: #FFFFFF;
+  font-size: 15px;
+  font-weight: 700;
+  font-family: 'Sora', sans-serif;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.12s ease;
+  margin-top: 6px;
+}
+
+.ride-card button[type="submit"]:hover:not(:disabled) {
+  background: #0F5548;
+  transform: translateY(-1px);
+}
+
+.ride-card button[type="submit"]:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.ride-card button[type="submit"]:disabled {
+  background: #C7C1B6;
+  cursor: not-allowed;
+}
+
+@media (max-width: 640px) {
+  .create-ride-page {
+    padding: 40px 16px;
+  }
+  .ride-card {
+    padding: 32px 24px;
+  }
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .stop-row {
+    grid-template-columns: 1fr;
+  }
+  .stop-order-badge {
+    display: none;
+  }
+}

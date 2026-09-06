@@ -1,0 +1,370 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&display=swap');
+
+* { box-sizing: border-box; }
+
+.myrides-page {
+  min-height: 100vh;
+  width: 100%;
+  background: #FBF7F0;
+  padding: 64px 24px;
+  font-family: 'Inter', "Segoe UI", system-ui, sans-serif;
+  position: relative;
+}
+
+.myrides-page::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 220px;
+  background: #146B5C;
+  clip-path: polygon(0 0, 100% 0, 100% 78%, 0 100%);
+}
+
+.myrides-container {
+  width: 100%;
+  max-width: 880px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* Header */
+
+.myrides-header {
+  margin-top: 24px;
+  margin-bottom: 30px;
+}
+
+.myrides-badge {
+  display: inline-block;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #E4F3EF;
+  background: rgba(255, 255, 255, 0.14);
+  padding: 6px 13px;
+  border-radius: 6px;
+  margin-bottom: 18px;
+}
+
+.myrides-header h1 {
+  font-family: 'Sora', sans-serif;
+  margin: 0 0 8px;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+}
+
+.myrides-header p {
+  margin: 0;
+  font-size: 14.5px;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.6;
+}
+
+/* States: loading / error / empty */
+
+.myrides-state {
+  background: #FFFFFF;
+  border: 1px solid #E4DDD0;
+  border-radius: 16px;
+  padding: 48px 32px;
+  text-align: center;
+  color: #75706A;
+  font-size: 14.5px;
+}
+
+.myrides-state.error {
+  color: #C4432B;
+  background: #FBEAE6;
+  border-color: #F3CFC5;
+}
+
+.myrides-state svg {
+  color: #B4ADA2;
+  margin-bottom: 12px;
+}
+
+.myrides-spinner {
+  width: 26px;
+  height: 26px;
+  border: 3px solid #E4DDD0;
+  border-top-color: #146B5C;
+  border-radius: 50%;
+  margin: 0 auto 14px;
+  animation: myrides-spin 0.7s linear infinite;
+}
+
+@keyframes myrides-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Ride cards */
+
+.ride-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ride-card-item {
+  background: #FFFFFF;
+  border: 1px solid #E4DDD0;
+  border-radius: 16px;
+  padding: 24px 26px;
+  box-shadow: 0 10px 30px rgba(20, 107, 92, 0.06);
+}
+
+.ride-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.ride-route {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Sora', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #211D1A;
+}
+
+.ride-route .route-arrow {
+  color: #B4ADA2;
+  font-weight: 400;
+  font-size: 15px;
+}
+
+.ride-status-badge {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 5px 11px;
+  border-radius: 999px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.ride-status-badge.active {
+  background: #E4F3EF;
+  color: #146B5C;
+}
+
+.ride-status-badge.cancelled {
+  background: #FBEAE6;
+  color: #C4432B;
+}
+
+.ride-status-badge.completed {
+  background: #EFEDE8;
+  color: #6B655C;
+}
+
+.ride-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-bottom: 14px;
+}
+
+.ride-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13.5px;
+  color: #4A453F;
+}
+
+.ride-meta-item svg {
+  color: #146B5C;
+  flex-shrink: 0;
+}
+
+.ride-description {
+  font-size: 13.5px;
+  color: #75706A;
+  line-height: 1.6;
+  margin: 0 0 16px;
+  padding-top: 14px;
+  border-top: 1px solid #F0EBE0;
+}
+
+.ride-stops-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 18px;
+}
+
+.stop-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #FBF7F0;
+  border: 1px solid #E4DDD0;
+  border-radius: 999px;
+  padding: 5px 12px 5px 8px;
+  font-size: 12.5px;
+  color: #4A453F;
+}
+
+.stop-chip .stop-order-dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: #146B5C;
+  color: #FFFFFF;
+  font-size: 10px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.stop-chip .stop-price {
+  color: #75706A;
+}
+
+.ride-chip-arrow {
+  color: #C7C1B6;
+  font-size: 12px;
+}
+
+.ride-card-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding-top: 14px;
+  border-top: 1px solid #F0EBE0;
+}
+
+.ride-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Sora', sans-serif;
+  font-size: 12.5px;
+  font-weight: 700;
+  padding: 8px 15px;
+  border-radius: 999px;
+  cursor: pointer;
+  border: 1.5px solid transparent;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.ride-action-btn.cancel-btn {
+  background: transparent;
+  border-color: #E9C6BC;
+  color: #C4432B;
+}
+
+.ride-action-btn.cancel-btn:hover:not(:disabled) {
+  background: #FBEAE6;
+}
+
+.ride-action-btn.cancel-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (max-width: 640px) {
+  .myrides-page {
+    padding: 40px 16px;
+  }
+  .ride-card-item {
+    padding: 20px 18px;
+  }
+  .ride-card-top {
+    flex-direction: column;
+  }
+}
+
+/* ---------- Search bar (add to MyRides.css) ---------- */
+
+.myrides-search-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  background: #FFFFFF;
+  border: 1px solid #E4DDD0;
+  border-radius: 14px;
+  padding: 12px 14px;
+  margin-bottom: 24px;
+  box-shadow: 0 10px 30px rgba(20, 107, 92, 0.06);
+}
+
+.myrides-search-field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1 1 160px;
+  min-width: 140px;
+  padding: 9px 12px;
+  border: 1px solid #E4DDD0;
+  border-radius: 10px;
+  background: #FBF7F0;
+  color: #B4ADA2;
+}
+
+.myrides-search-field input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: 'Inter', "Segoe UI", system-ui, sans-serif;
+  font-size: 13.5px;
+  color: #211D1A;
+}
+
+.myrides-search-field input::placeholder {
+  color: #B4ADA2;
+}
+
+.myrides-search-field:focus-within {
+  border-color: #146B5C;
+}
+
+.myrides-search-field:focus-within svg {
+  color: #146B5C;
+}
+
+.myrides-clear-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Sora', sans-serif;
+  font-size: 12.5px;
+  font-weight: 700;
+  padding: 9px 14px;
+  border: 1.5px solid #E9C6BC;
+  border-radius: 999px;
+  background: transparent;
+  color: #C4432B;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s ease;
+}
+
+.myrides-clear-btn:hover {
+  background: #FBEAE6;
+}
+
+@media (max-width: 640px) {
+  .myrides-search-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .myrides-clear-btn {
+    justify-content: center;
+  }
+}

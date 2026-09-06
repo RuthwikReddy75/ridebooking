@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&display=swap');
+
+* { box-sizing: border-box; }
+
+.dashboard-page {
+  min-height: 100vh;
+  background: #FBF7F0;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.dashboard-main {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 40px 40px 80px;
+}
+
+.welcome-banner {
+  background: linear-gradient(155deg, #1B2A26 0%, #0E1A17 100%);
+  border-radius: 20px;
+  padding: 40px 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  color: #FFFFFF;
+  position: relative;
+  overflow: hidden;
+}
+
+.welcome-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 85% 20%, rgba(244, 197, 66, 0.16), transparent 55%);
+  pointer-events: none;
+}
+
+.welcome-eyebrow {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #8FD9C4;
+  margin-bottom: 10px;
+}
+
+.welcome-banner h1 {
+  font-family: 'Sora', sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  margin: 0 0 8px;
+  letter-spacing: -0.01em;
+}
+
+.welcome-banner p {
+  margin: 0;
+  font-size: 14.5px;
+  color: #C8D6D1;
+  max-width: 380px;
+}
+
+.welcome-actions {
+  display: flex;
+  gap: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.btn-primary,
+.btn-secondary {
+  padding: 12px 22px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: 'Sora', sans-serif;
+  text-decoration: none;
+  transition: transform 0.12s ease, opacity 0.15s ease;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: #F4C542;
+  color: #161200;
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.btn-primary:hover,
+.btn-secondary:hover {
+  transform: translateY(-1px);
+  opacity: 0.92;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-top: 32px;
+}
+
+.dashboard-card {
+  background: #FFFFFF;
+  border: 1px solid #E4DDD0;
+  border-radius: 16px;
+  padding: 26px 22px;
+  text-decoration: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 32px rgba(20, 107, 92, 0.14);
+  border-color: #146B5C;
+}
+
+.card-icon {
+  font-size: 26px;
+  margin-bottom: 14px;
+}
+
+.dashboard-card h3 {
+  font-family: 'Sora', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #211D1A;
+  margin: 0 0 6px;
+}
+
+.dashboard-card p {
+  font-size: 13px;
+  color: #75706A;
+  margin: 0;
+  line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+  .dashboard-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .dashboard-main {
+    padding: 24px 20px 60px;
+  }
+  .welcome-banner {
+    padding: 28px 24px;
+  }
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}

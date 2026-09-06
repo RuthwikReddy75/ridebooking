@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@500;600&display=swap');
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 40px;
+  background: #FFFFFF;
+  border-bottom: 1px solid #E4DDD0;
+  font-family: 'Inter', system-ui, sans-serif;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Sora', sans-serif;
+  font-weight: 800;
+  font-size: 19px;
+  color: #211D1A;
+}
+
+.navbar-logo-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: #146B5C;
+  display: inline-block;
+}
+
+.navbar-accent {
+  color: #146B5C;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-brand-link {
+  text-decoration: none;
+}
+
+.nav-link {
+  display: inline-block;
+  padding: 9px 16px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #4A453F;
+  text-decoration: none;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.nav-link:hover {
+  background: #F3EEE4;
+  color: #211D1A;
+}
+
+.nav-link.active {
+  background: #146B5C;
+  color: #FFFFFF;
+}
+
+.logout-btn {
+  background: none;
+  border: none;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.navbar-username {
+  font-size: 14px;
+  font-weight: 600;
+  color: #4A453F;
+  padding: 9px 8px;
+}
+
+@media (max-width: 720px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px 20px;
+  }
+  .navbar-links {
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  .nav-link {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+}
