@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "ride_stops")
 public class RideStop {
-	
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,6 +19,9 @@ public class RideStop {
 
     @Column(name = "stop_order", nullable = false)
     private Integer stopOrder;
+
+    @Column(name = "price", nullable = false)
+    private Double price;
 
     public RideStop() {
     }
@@ -56,4 +58,11 @@ public class RideStop {
         this.stopOrder = stopOrder;
     }
 
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
 }

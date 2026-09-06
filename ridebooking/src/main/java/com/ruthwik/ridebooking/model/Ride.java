@@ -3,10 +3,8 @@ package com.ruthwik.ridebooking.model;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
-
 
 @Entity
 @Table(name = "rides")
@@ -17,7 +15,7 @@ public class Ride {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "driver_id", nullable = false)
+    @JoinColumn(name = "driver_id", nullable =false)
     private User driver;
 
     @Column(nullable = false)
@@ -35,15 +33,15 @@ public class Ride {
     @Column(name = "total_seats", nullable = false)
     private Integer totalSeats;
 
-
     @Column(name = "price_per_seat", nullable = false)
     private Double pricePerSeat;
 
     @Column(length = 500)
     private String description;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private String status;
+    private RideStatus status;
 
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
@@ -54,19 +52,11 @@ public class Ride {
     @OneToMany(mappedBy = "ride", cascade = CascadeType.ALL, orphanRemoval = true)
     @OrderBy("stopOrder ASC")
     private List<RideStop> rideStops = new ArrayList<>();
-    
-    @Column(name="Vehicle_number")
+
+    @Column(name = "vehicle_number")
     private String vehicleNumber;
 
-    public String getVehicleNumber() {
-		return vehicleNumber;
-	}
-
-	public void setVehicleNumber(String vehicleNumber) {
-		this.vehicleNumber = vehicleNumber;
-	}
-
-	public Ride() {
+    public Ride() {
     }
 
     @PrePersist
@@ -126,8 +116,8 @@ public class Ride {
         return rideTime;
     }
 
-    public void setRideTime(LocalDateTime localDateTime) {
-        this.rideTime = localDateTime;
+    public void setRideTime(LocalDateTime rideTime) {
+        this.rideTime = rideTime;
     }
 
     public Integer getTotalSeats() {
@@ -137,8 +127,6 @@ public class Ride {
     public void setTotalSeats(Integer totalSeats) {
         this.totalSeats = totalSeats;
     }
-
-   
 
     public Double getPricePerSeat() {
         return pricePerSeat;
@@ -156,11 +144,11 @@ public class Ride {
         this.description = description;
     }
 
-    public String getStatus() {
+    public RideStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(RideStatus status) {
         this.status = status;
     }
 
@@ -179,6 +167,12 @@ public class Ride {
     public void setRideStops(List<RideStop> rideStops) {
         this.rideStops = rideStops;
     }
-	
 
+    public String getVehicleNumber() {
+        return vehicleNumber;
+    }
+
+    public void setVehicleNumber(String vehicleNumber) {
+        this.vehicleNumber = vehicleNumber;
+    }
 }

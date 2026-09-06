@@ -1,47 +1,43 @@
 package com.ruthwik.ridebooking.Dto;
 
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import com.ruthwik.ridebooking.model.RideStatus;
+public class UpdateRideRequest {
 
-public class RideResponse {
-
-    private Long id;
-
+    @NotBlank(message = "Source is required")
     private String source;
 
+    @NotBlank(message = "Destination is required")
     private String destination;
 
+    @NotNull(message = "Ride date is required")
     private LocalDate rideDate;
 
+    @NotNull(message = "Ride time is required")
     private LocalDateTime rideTime;
 
+    @NotNull(message = "Total seats is required")
+    @Min(value = 1, message = "Total seats must be at least 1")
     private Integer totalSeats;
 
+    @NotNull(message = "Price per seat is required")
+    @Min(value = 1, message = "Price per seat must be greater than 0")
     private Double pricePerSeat;
-
-    private String vehicleNumber;
 
     private String description;
 
-    private RideStatus status;
+    private String vehicleNumber;
 
-    private LocalDateTime createdAt;
+    @NotNull(message = "Ride stops are required")
+    private List<RideStopRequest> rideStops;
 
-    private List<RideStopResponse> rideStops;
-
-    public RideResponse() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+    // Getters and Setters
 
     public String getSource() {
         return source;
@@ -91,14 +87,6 @@ public class RideResponse {
         this.pricePerSeat = pricePerSeat;
     }
 
-    public String getVehicleNumber() {
-        return vehicleNumber;
-    }
-
-    public void setVehicleNumber(String vehicleNumber) {
-        this.vehicleNumber = vehicleNumber;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -107,27 +95,19 @@ public class RideResponse {
         this.description = description;
     }
 
-    public RideStatus getStatus() {
-        return status;
+    public String getVehicleNumber() {
+        return vehicleNumber;
     }
 
-    public void setStatus(RideStatus status) {
-        this.status = status;
+    public void setVehicleNumber(String vehicleNumber) {
+        this.vehicleNumber = vehicleNumber;
     }
 
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public List<RideStopResponse> getRideStops() {
+    public List<RideStopRequest> getRideStops() {
         return rideStops;
     }
 
-    public void setRideStops(List<RideStopResponse> rideStops) {
+    public void setRideStops(List<RideStopRequest> rideStops) {
         this.rideStops = rideStops;
     }
 }

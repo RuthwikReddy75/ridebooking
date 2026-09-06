@@ -8,6 +8,8 @@ public class RideStopResponse {
 
     private Integer stopOrder;
 
+    private Double price;
+
     public RideStopResponse() {
     }
 
@@ -33,5 +35,13 @@ public class RideStopResponse {
 
     public void setStopOrder(Integer stopOrder) {
         this.stopOrder = stopOrder;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
     }
 }

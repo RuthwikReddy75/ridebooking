@@ -18,6 +18,8 @@ import com.ruthwik.ridebooking.Dto.RegisterRequest;
 import com.ruthwik.ridebooking.Dto.RegisterResponse;
 import com.ruthwik.ridebooking.service.AuthService;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
 @RestController
@@ -33,6 +35,7 @@ public class AuthController {
     @PostMapping("/register")
     public ResponseEntity<String> registerUser(@Valid @RequestBody RegisterRequest request) {
     	String message;
+    	System.out.println("in register method");
     	
 		try {
 			message = authService.register(request);
@@ -60,8 +63,13 @@ public class AuthController {
  
     // Test API
     @GetMapping("/test")
-    public String testApi() {
+    public String testApi(HttpServletRequest request) {
+    	 HttpSession session = request.getSession(false);
 
-        return "Auth Controller Working";
+    	    if (session == null) {
+    	        return "No session";
+    	    }
+
+    	    return "Session Exists";
     }
 }

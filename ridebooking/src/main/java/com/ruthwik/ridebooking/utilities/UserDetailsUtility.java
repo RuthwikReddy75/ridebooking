@@ -24,7 +24,6 @@ public class UserDetailsUtility {
 			        SecurityContextHolder.getContext().getAuthentication();
 			Optional<User> user=userRepository.findByName(authentication.getName());
 			return user.get();
-			
 	 }
 	
 

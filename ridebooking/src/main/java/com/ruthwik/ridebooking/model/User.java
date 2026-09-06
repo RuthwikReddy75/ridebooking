@@ -132,7 +132,7 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @Column(length = 15)
+    @Column(length = 15,nullable=false)
     private String phone;
 
     @Column(name = "profile_photo")
